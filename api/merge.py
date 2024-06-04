@@ -144,5 +144,11 @@ class MergeResult:
             elif original_line is not None and a_line is not None:
                 # the change only exists in version b
                 merged_from_b.add(line)
+            elif b_line is not None:
+                # only b is valid
+                merged_from_b.add(line)
+            elif a_line is not None:
+                # only a is valid
+                merged_from_a.add(line)
 
         return cls(original, a, b, merged_from_a, merged_from_b)
